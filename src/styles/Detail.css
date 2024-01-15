@@ -1,0 +1,76 @@
+.detail{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    max-width: 700px;
+    padding: 5px;
+    gap:10px;
+}
+
+.detail .channel-info,.detail .channel-footer,.detail .channel-more{
+    border:0.1px solid white;
+    width:100%;
+    min-height: 25vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    border-radius: 5px;
+}
+
+.detail .channel-desc{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+    flex-wrap: wrap;
+    gap:1rem;
+}
+
+.detail .channel-desc img{
+    border-radius: 50%;
+}
+
+.detail .channel-desc button{
+    color:white;
+    border:1px solid white;
+    padding: 5px 15px;
+    border-radius: 20px;
+}
+
+.detail .channel-info >div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width:100%;
+}
+
+.detail .channel-info .channel-title p{
+    font-size: 1.25rem;
+    word-spacing: 1px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.detail .channel-info .channel-desc{
+    padding: 5px;
+    justify-content: space-between;
+}
+
+.detail .channel-info .channel-desc div p{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-transform: capitalize;
+    font-size: 1.25rem;
+}
+
+.detail .channel-info .channel-desc div p:last-child{
+    font-size: 0.75rem;
+}
+
+.detail .channel-footer p{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.detail .channel-more p{
+    margin: 5px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}

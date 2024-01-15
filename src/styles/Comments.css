@@ -1,0 +1,21 @@
+.comments{
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    border:1px solid white;
+    gap:1rem;
+    width:100%;
+}
+
+.comments >div{
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-bottom: 5px;
+    width:100%;
+}
+
+.comments div img{
+    border-radius: 50%;
+}
