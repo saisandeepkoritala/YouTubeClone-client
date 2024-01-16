@@ -1,0 +1,16 @@
+
+@media only screen and (max-width: 700px) {
+    .recomend{
+        width:100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .recomend .list img{
+        width:100%;
+        object-fit: contain;
+        box-shadow: 5px 5px 2px white, -5px -5px 2px white;
+    }
+}

@@ -3,6 +3,7 @@ import axios from "axios";
 import { setvideoRecomend ,changeSelectedItem,setvideoRecomendToken} from './store';
 import { useDispatch,useSelector} from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import "../styles/recomend.css";
 
 
 const VideoRecomend = (video_id) => {
@@ -15,7 +16,7 @@ const VideoRecomend = (video_id) => {
 
         const getData=async()=>{
             await new Promise(resolve => setTimeout(resolve, 2000));
-            const resp = await axios.post("http://localhost:5000/getVideoRecomend",{
+            const resp = await axios.post(`${process.env.REACT_APP_PRODUCTION }/getVideoRecomend`,{
                 video_id:video_id
             })
             //need to set continution token also 
@@ -25,16 +26,21 @@ const VideoRecomend = (video_id) => {
         getData();
     },[])
     const render = videoRecomend?.map((item,i)=>{
-        const src=item.thumbnails["1"].url
-        return <div key={i}>
-            <img src={src} alt="" onClick={()=>{
-            dispatch(changeSelectedItem(item))
-            navigate(`/detail/${item.video_id}`)
-        }}/>
-        </div>
+            if(i<=15){
+                const src=item.thumbnails["1"].url
+                return <div key={i} className='list'>
+                <img src={src} alt="" onClick={()=>{
+                dispatch(changeSelectedItem(item))
+                navigate(`/detail/${item.video_id}`)
+            }}/>
+            </div>
+            }
+            else{
+                return ""
+            }
     })
     return (
-    <div>{render}</div>
+    <div className='recomend'>{render}</div>
     )
 }
 

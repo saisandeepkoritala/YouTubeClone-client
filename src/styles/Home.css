@@ -8,4 +8,17 @@
 
 .home img{
     width:30%;
+    cursor: pointer;
+    box-shadow: 5px 5px 2px white, -5px -5px 2px white;
+}
+
+.home .load_more{
+    width:100%;
+}
+
+@media only screen and (max-width: 700px) {
+
+    .home img{
+        width:40%;
+    }
 }

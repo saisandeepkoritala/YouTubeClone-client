@@ -7,10 +7,18 @@
     padding: 5px;
     gap:10px;
 }
-
-.detail .channel-info,.detail .channel-footer,.detail .channel-more{
+.name{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width:100%;
+}
+.detail >div{
     border:0.1px solid white;
     width:100%;
+}
+
+.detail .channel-info,.detail .channel-footer,.detail .channel-more{
     min-height: 25vh;
     display: flex;
     align-items: center;

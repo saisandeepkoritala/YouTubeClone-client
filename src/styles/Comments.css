@@ -19,3 +19,21 @@
 .comments div img{
     border-radius: 50%;
 }
+
+.comments .list .user p{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.comments .more{
+    cursor: pointer;
+    width:100%;
+    font-size: 1.2rem;
+    text-transform: capitalize;
+    border:1px solid white;
+    padding: 5px;
+    border-radius: 20px;
+    background-color: grey;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

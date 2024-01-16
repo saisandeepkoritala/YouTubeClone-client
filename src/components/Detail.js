@@ -10,6 +10,7 @@ import Comments from "./Comments";
 import axios from "axios";
 import "../styles/Detail.css";
 import VideoRecomend from './VideoRecomend';
+import {ToastContainer,toast} from "react-toastify";
 
 const Detail = () => {
 
@@ -23,8 +24,7 @@ const Detail = () => {
   useEffect(()=>{
     const getData = async () => {
       try {
-
-        const respVideoDetails = await axios.post("http://localhost:5000/getVideoDetails", {
+        const respVideoDetails = await axios.post(`${process.env.REACT_APP_PRODUCTION }/getVideoDetails`, {
           video_id: item.id,
         });
         dispatch(setvideoDetails(respVideoDetails?.data?.data));
@@ -33,7 +33,7 @@ const Detail = () => {
         // Introduce another delay of 1000 milliseconds
         await new Promise(resolve => setTimeout(resolve, 2000));
 
-        const respChannel = await axios.post("http://localhost:5000/channel", {
+        const respChannel = await axios.post(`${process.env.REACT_APP_PRODUCTION }/channel`, {
           channel_id: channel_id,
         });
         dispatch(setchannelData(respChannel?.data?.data));
@@ -41,7 +41,7 @@ const Detail = () => {
         // Introduce a delay of 1000 milliseconds (1 second)
         await new Promise(resolve => setTimeout(resolve, 2000));
     
-        const respComments = await axios.post("http://localhost:5000/getComments",{
+        const respComments = await axios.post(`${process.env.REACT_APP_PRODUCTION }/getComments`,{
           video_id: item.id
         });
         dispatch(setvideoCommentsToken(respComments?.data?.data?.continuation_token));
@@ -49,8 +49,8 @@ const Detail = () => {
 
 
       } catch (error) {
-        console.error("Error fetching data:", error);
-        // Handle errors here
+        console.error("Error fetching data:");
+        notify()
       }
     };
     
@@ -70,6 +70,15 @@ const Detail = () => {
             window.removeEventListener('resize', handleResize);
         };
   },[item.id,dispatch,channel_id])
+
+  const notify=()=>{
+    toast.info("Comments Loading Error", {
+        progressStyle: { background: "red" },
+        theme: 'colored',
+        style: { background: "black", color: "red" },
+    });
+    
+}
 
   // console.log("video details",videoDetails)
   let renderInfo="";
@@ -127,6 +136,7 @@ const Detail = () => {
 
   return (
     <>
+    <ToastContainer />
     <div className='detail'>
       <YouTubeVideo videoId={item.id} width={width} height={height}/>
       {renderInfo}
@@ -134,7 +144,10 @@ const Detail = () => {
       {renderDetails}
       <Comments video_id={item.id} />
     </div>
-    <VideoRecomend video_id={item.id} />
+    <div>
+      <div className='name'><h1>Videos you May also like</h1></div>
+      <VideoRecomend video_id={item.id} />
+      </div>
     </>
     
   )

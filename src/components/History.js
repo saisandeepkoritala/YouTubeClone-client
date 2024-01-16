@@ -1,6 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import YouTubeVideo from "../YouTubeVideo";
+import "../styles/History.css";
 
 const History = () => {
   const {searchHistory,watchHistory} = useSelector((store)=>store.user)
@@ -13,13 +14,15 @@ const History = () => {
 
   const render2= watchHistory.map((item)=>{
     console.log(item)
-    return <YouTubeVideo videoId={item} width={500} height={500}/>
+    return <YouTubeVideo videoId={item} width={300} height={200}/>
   })
 
   return (
-    <div>
-      Search History:{render1}
-      Watch History:{render2}
+    <div className='history'>
+      <h1>Search History:</h1>
+      <div>{render1}</div>
+      <h1>Watch History:</h1>
+      <div>{render2}</div>
     </div>
   )
 }

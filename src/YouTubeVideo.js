@@ -6,15 +6,18 @@ const YouTubeVideo = ( {videoId,width,height} ) => {
     let setwidth = width;
     let setheight = height;
 
-    if(width<=500){
-        setwidth=width;
+    if(width<=700){
+        setwidth=width-10;
     }
     else{
         setwidth=600;
     }
 
-    if(!(height<=400)){
-        setheight=400;
+    if(height<=500){
+        setheight=height-100;
+    }
+    else{
+        setheight = 300;
     }
 
     const opts = {

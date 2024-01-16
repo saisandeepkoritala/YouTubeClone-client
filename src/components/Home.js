@@ -12,10 +12,9 @@ const Home=()=> {
     const Info = useSelector((store)=>store.user.data);
 
     useEffect(()=>{
-
         const getData=async()=>{
-            const resp = await axios.get("http://localhost:5000/getTrending")
-            // console.log(resp?.data?.data?.videos)
+            const resp = await axios.get(`${process.env.REACT_APP_PRODUCTION }/getTrending`)
+            console.log(resp?.data?.data?.videos)
             dispatch(setData(resp?.data?.data?.videos))
         }
         getData()
