@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const userSlice = createSlice({
     name:"User",
     initialState:{
+        isUser:false,
         searchTerm:"",
         data:[],
         dataToken:"",
@@ -18,6 +19,9 @@ const userSlice = createSlice({
         videoRecomendToken:"",
     },
     reducers:{
+        setisUser(state,action){
+            state.isUser = action.payload;
+        },
         changeSearchTerm(state,action){
             state.searchTerm = action.payload;
         },
@@ -67,4 +71,4 @@ const userSlice = createSlice({
 })
 
 export const UserReducer = userSlice.reducer;
-export const {changeSearchTerm,setData,changeSelectedItem,setsearchHistory,setwatchHistory,setchannelData,setvideoDetails,setvideoComments,setvideoCommentsToken,setMore,setvideoRecomend,setvideoRecomendToken,setdataToken ,setDataMore} = userSlice.actions;
+export const {setisUser,changeSearchTerm,setData,changeSelectedItem,setsearchHistory,setwatchHistory,setchannelData,setvideoDetails,setvideoComments,setvideoCommentsToken,setMore,setvideoRecomend,setvideoRecomendToken,setdataToken ,setDataMore} = userSlice.actions;

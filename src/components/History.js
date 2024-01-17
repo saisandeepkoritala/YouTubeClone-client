@@ -5,16 +5,14 @@ import "../styles/History.css";
 
 const History = () => {
   const {searchHistory,watchHistory} = useSelector((store)=>store.user)
-  console.log(searchHistory)
-  console.log(watchHistory)
-
+  const newwatchHistory = [...new Set(watchHistory)];
   const render1= searchHistory.map((item)=>{
     return <p>{item}</p>
   })
 
-  const render2= watchHistory.map((item)=>{
+  const render2= newwatchHistory.map((item)=>{
     console.log(item)
-    return <YouTubeVideo videoId={item} width={300} height={200}/>
+    return <YouTubeVideo videoId={item} width={300} height={300}/>
   })
 
   return (

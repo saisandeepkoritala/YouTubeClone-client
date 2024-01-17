@@ -5,6 +5,7 @@ import { changeSelectedItem,setDataMore,setdataToken} from "./store";
 import "../styles/Home.css";
 import { RotatingLines } from "react-loader-spinner";
 import axios from "axios";
+import {ToastContainer,toast} from "react-toastify";
 
 const Search = () => {
     const navigate = useNavigate();
@@ -23,6 +24,15 @@ const Search = () => {
         }}
         />
     ));
+
+    const notify=()=>{
+        toast.info("Loading more, hang on !!", {
+            progressStyle: { background: "green" },
+            theme: 'colored',
+            style: { background: "black", color: "green" },
+        });
+        
+    }
 
     const bottomDivRef = useRef(null);
 
@@ -48,6 +58,7 @@ const Search = () => {
         }).then((res)=>{
             console.log("hello",res?.data?.data?.videos)
             console.log("token",res?.data?.data?.continuation_token)
+            notify()
         dispatch(setDataMore(res?.data?.data?.videos))
         dispatch(setdataToken(res?.data?.data?.continuation_token))
     })
@@ -67,6 +78,7 @@ const Search = () => {
 
     return (
         <div className="home">
+        <ToastContainer />
         {render}
         <div className="load_more" ref={bottomDivRef}>
             {(

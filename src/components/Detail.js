@@ -22,6 +22,8 @@ const Detail = () => {
   const item = useParams()
 
   useEffect(()=>{
+
+    dispatch(setwatchHistory(item.id))
     const getData = async () => {
       try {
         const respVideoDetails = await axios.post(`${process.env.REACT_APP_PRODUCTION }/getVideoDetails`, {
@@ -37,6 +39,7 @@ const Detail = () => {
           channel_id: channel_id,
         });
         dispatch(setchannelData(respChannel?.data?.data));
+        console.log(respChannel.data)
     
         // Introduce a delay of 1000 milliseconds (1 second)
         await new Promise(resolve => setTimeout(resolve, 2000));
@@ -117,11 +120,13 @@ const Detail = () => {
 
     const desp = selectedItem?.description?.split('•')
     renderFooter =<div className='channel-footer'>
-      <p>{selectedItem.number_of_views.toLocaleString()} Views ,</p>
+      <p>{selectedItem.number_of_views.toLocaleString()} Views </p>
+      <p>{channelData.description}</p>
       <p>Uploaded on {formattedDate}</p>
       <div>{desp?.map((item,i)=>{
         return <p key={i}>{item}</p>
-      })}</div>
+      })}
+      </div>
 
     </div>
 

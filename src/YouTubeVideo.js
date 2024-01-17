@@ -29,7 +29,7 @@ const YouTubeVideo = ( {videoId,width,height} ) => {
         },
     };
 
-    return <YouTube videoId={videoId} opts={opts} />;
+    return <YouTube videoId={videoId} opts={opts} className='video'/>;
 };
 
 export default YouTubeVideo;

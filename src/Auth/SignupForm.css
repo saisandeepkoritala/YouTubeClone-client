@@ -1,0 +1,113 @@
+.signup-form-container {
+    width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: flex;
+    align-items:center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    min-height: 70vh;
+    }
+
+    .signup-form-container form {
+        display: flex;
+        align-items: flex-start;
+        justify-content:space-evenly;
+        flex-direction: column;
+        width:100%;
+        min-height: 50vh;
+    }
+    .signup-form-container div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width:100%;
+    }
+    
+    .signup-form-container h2 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+    
+    .signup-form-container form {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .signup-form-container label {
+        margin-bottom: 5px;
+        font-size: 16px;
+        letter-spacing: 1px;
+    }
+    
+    .signup-form-container input {
+        padding: 15px 5px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 15px;
+        width: 300px;
+    }
+    
+    .signup-form-container .error {
+        color: red;
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+    
+    .signup-form-container button {
+        font-size: 16px;
+        background-color: #007BFF;
+        color: white;
+        border: none;
+        border-radius: 15px;
+        cursor: pointer;
+        margin: 0 auto;
+    }
+
+    .signup-form-container .fields div label,.signup-form-container .fields div input{
+        display: block;
+    }
+
+    .signup-form-container .fields>div{
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .signup-form-container .fields .vanish{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .signup-form-container .fields .vanish input{
+        display: block;
+        margin: 0;
+        padding: 10px;
+        width:50%;
+    }
+
+    .signup-form-container .fields button{
+        padding: 5px 15px;
+        border:1px solid white;
+    }
+    .signup-form-container .fields .vanish button{
+        display: block;
+        background-color: red;
+        margin: 0;
+        padding: 5px;
+        border: 1px solid white;
+    }
+    .signup-form-container .fields .vanishButton{
+        border:1px solid white;
+        background-color: #007BFF;
+        color:white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        border-radius: 20px;
+        font-size: 20px;
+        cursor: pointer;
+    }

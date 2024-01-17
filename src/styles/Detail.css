@@ -18,6 +18,12 @@
     width:100%;
 }
 
+.detail .video{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .detail .channel-info,.detail .channel-footer,.detail .channel-more{
     min-height: 25vh;
     display: flex;

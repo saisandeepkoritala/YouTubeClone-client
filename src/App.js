@@ -1,35 +1,40 @@
 import {BrowserRouter,Routes,Route,Link} from "react-router-dom";
 import { FaYoutube } from "react-icons/fa";
-import { SiYoutubeshorts } from "react-icons/si";
+import { VscAccount } from "react-icons/vsc";
 import { FaHistory ,FaBars} from "react-icons/fa";
 
 import Home from "./components/Home";
-import Shorts from "./components/Shorts";
+import Account from "./components/Account";
 import History from "./components/History";
 import Detail from "./components/Detail";
 import Input from "./components/Input";
-import  Search  from "./components/Search";
+import Search  from "./components/Search";
 import Footer from "./components/Footer";
+import Login from "./Auth/login";
+import Signup from "./Auth/signup";
+
 import "react-toastify/dist/ReactToastify.css";
+import { useSelector } from "react-redux";
 
 function App() {
-
+  const {isUser} = useSelector((store)=>store.user)
   return (
   <BrowserRouter> 
-      <div className="navbar">
+      {isUser && <div className="navbar">
         <Link to="/sidebar" ><FaBars /></Link>
-        <Link to="/" ><div className="Wrap"><FaYoutube color="red" size={30}/><h1>
-        YouTube</h1></div></Link>
+        <Link to="/home" ><div className="Wrap"><FaYoutube color="red" size={30}/><h1>YouTube</h1></div></Link>
         <Input />
-        <Link to="/shorts" ><SiYoutubeshorts /></Link>
         <Link to="/history" ><FaHistory /></Link>
-      </div>
+        <Link to="/account" ><VscAccount /></Link>
+      </div>}
       <div className="routes">
         <Routes>
-          <Route element={<Home />} path="/"/>
-          <Route element={<Shorts />} path="/shorts"/>
+          <Route element={<Login />} path="/"/>
+          <Route element={<Signup />} path="/signup"/>
+          <Route element={<Home />} path="/home"/>
           <Route element={<History />} path="/history"/>
           <Route element={<Search />} path="/search"/>
+          <Route element={<Account />} path="/account"/>
           <Route element={<Detail />} path="/detail/:id"/>
         </Routes>
       </div>

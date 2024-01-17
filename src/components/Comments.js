@@ -31,7 +31,6 @@ const Comments = ({video_id}) => {
         theme: 'colored',
         style: { background: "black", color: "red" },
     });
-    
 }
 
   const renderComments = videoComments?.map((item)=>{

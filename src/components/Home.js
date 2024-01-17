@@ -1,4 +1,3 @@
-
 import {useEffect} from "react";
 import {useNavigate} from "react-router-dom";
 import {useDispatch, useSelector } from "react-redux";
@@ -14,8 +13,8 @@ const Home=()=> {
     useEffect(()=>{
         const getData=async()=>{
             const resp = await axios.get(`${process.env.REACT_APP_PRODUCTION }/getTrending`)
-            console.log(resp?.data?.data?.videos)
-            dispatch(setData(resp?.data?.data?.videos))
+            console.log(resp?.data?.data?.youtubedata?.videos)
+            dispatch(setData(resp?.data?.data?.youtubedata?.videos))
         }
         getData()
 
