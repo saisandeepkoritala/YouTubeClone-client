@@ -25,7 +25,7 @@ const VideoRecomend = (video_id) => {
                 ))
         }
         getData();
-    },[dispatch,video_id])
+    },[])
 
     const handleClick=async(item)=>{
         console.log(item)
