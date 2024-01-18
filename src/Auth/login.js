@@ -14,7 +14,7 @@ const Login = () => {
 
     useEffect(() => {
         inputEmailRef.current.focus();
-        axios.get(`${process.env.REACT_APP_PRODUCTION}/`)
+        axios.get(`${process.env.REACT_APP_PRODUCTION}/isAlive`)
         .then((res)=>{
             if(res.status===200){
                 SetColor("green")
@@ -38,6 +38,8 @@ const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        // dispatch(setisUser(true))
+        // navigate("/home")
         const resp = await axios.post(`${process.env.REACT_APP_PRODUCTION}/login`,{
             email:formData.username,
             password:formData.password
