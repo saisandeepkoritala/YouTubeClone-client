@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {useDispatch} from "react-redux"
 import {setisUser} from "../components/store";
+import ColoredCircle from '../components/ColoredCircle';
 import "./Login.css";
 import axios from "axios";
 
@@ -9,9 +10,17 @@ const Login = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const inputEmailRef = useRef();
+    const [Color,SetColor]=useState("red");
 
     useEffect(() => {
         inputEmailRef.current.focus();
+        axios.get(`${process.env.REACT_APP_PRODUCTION}/`)
+        .then((res)=>{
+            if(res.status===200){
+                SetColor("green")
+            }
+        })
+        .catch((err)=>console.log(err))
     }, []);
 
     const [formData, setFormData] = useState({
@@ -81,6 +90,7 @@ const Login = () => {
             >
                 Sign Up
             </button>
+            <ColoredCircle color={Color}/>
         </div>
     );
 };
