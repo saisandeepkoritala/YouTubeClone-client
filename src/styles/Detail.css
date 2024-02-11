@@ -1,9 +1,9 @@
 .detail{
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-start;
+    justify-content: flex-start;
     flex-direction: column;
-    max-width: 700px;
+    max-width: 600px;
     padding: 5px;
     gap:10px;
 }
@@ -12,6 +12,8 @@
     align-items: center;
     justify-content: center;
     width:100%;
+    font-size: 0.85rem;
+    
 }
 .detail >div{
     border:0.1px solid white;

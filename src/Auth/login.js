@@ -1,8 +1,9 @@
 import { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {useDispatch} from "react-redux"
-import {setisUser} from "../components/store";
+import {setisUser,setuserInfo} from "../components/store";
 import ColoredCircle from '../components/ColoredCircle';
+import {ToastContainer,toast} from "react-toastify";
 import "./Login.css";
 import axios from "axios";
 
@@ -28,6 +29,14 @@ const Login = () => {
         password: '',
     });
 
+    const notify=(msg)=>{
+        toast.info(msg, {
+            progressStyle: { background: "red" },
+            theme: 'colored',
+            style: { background: "black", color: "red" },
+        });
+    }
+
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setFormData({
@@ -38,24 +47,28 @@ const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        // dispatch(setisUser(true))
-        // navigate("/home")
-        const resp = await axios.post(`${process.env.REACT_APP_PRODUCTION}/login`,{
-            email:formData.username,
-            password:formData.password
-        })
-        console.log(resp)
-        if(resp.status===200){
-            dispatch(setisUser(true))
-            navigate("/home")
+        try{
+            const resp = await axios.post(`${process.env.REACT_APP_PRODUCTION}/login`,{
+                email:formData.username,
+                password:formData.password
+            })
+            // console.log(resp.data.data)
+            if(resp.status===200){
+                dispatch(setuserInfo(resp?.data?.data))
+                dispatch(setisUser(true))
+                navigate("/home")
+            }
         }
-        else{
+        catch(e){
             console.log("error")
+            notify("invalid details")
         }
+        
     };
 
     return (
         <div className='login'>
+            <ToastContainer />
             <h2 >Login</h2>
             <form onSubmit={handleSubmit}>
                 <div >
@@ -87,7 +100,7 @@ const Login = () => {
             </form>
 
             <button
-                type="button"
+                type="submit"
                 onClick={() => navigate("/signup")}
             >
                 Sign Up

@@ -21,8 +21,8 @@ const YouTubeVideo = ( {videoId,width,height} ) => {
     }
 
     const opts = {
-        height: `${setheight-15}`,
-        width: `${setwidth-15}`,
+        height: `${setheight-10}`,
+        width: `${setwidth-10}`,
         playerVars: {
         // autoplay: 1,
         // mute:1

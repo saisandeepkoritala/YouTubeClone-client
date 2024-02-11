@@ -14,14 +14,15 @@ import Login from "./Auth/login";
 import Signup from "./Auth/signup";
 
 import "react-toastify/dist/ReactToastify.css";
-import { useSelector } from "react-redux";
+import { useSelector} from "react-redux";
+
 
 function App() {
   const {isUser} = useSelector((store)=>store.user)
   return (
   <BrowserRouter> 
       {isUser && <div className="navbar">
-        <Link to="/sidebar" ><FaBars /></Link>
+        <Link><FaBars /></Link>
         <Link to="/home" ><div className="Wrap"><FaYoutube color="red" size={30}/><h1>YouTube</h1></div></Link>
         <Input />
         <Link to="/history" ><FaHistory /></Link>

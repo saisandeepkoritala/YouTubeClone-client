@@ -4,6 +4,7 @@ const userSlice = createSlice({
     name:"User",
     initialState:{
         isUser:false,
+        userInfo:[],
         searchTerm:"",
         data:[],
         dataToken:"",
@@ -19,8 +20,14 @@ const userSlice = createSlice({
         videoRecomendToken:"",
     },
     reducers:{
+        setsideBar(state,action){
+            state.sideBar = action.payload;
+        },
         setisUser(state,action){
             state.isUser = action.payload;
+        },
+        setuserInfo(state,action){
+            state.userInfo = action.payload;
         },
         changeSearchTerm(state,action){
             state.searchTerm = action.payload;
@@ -71,4 +78,4 @@ const userSlice = createSlice({
 })
 
 export const UserReducer = userSlice.reducer;
-export const {setisUser,changeSearchTerm,setData,changeSelectedItem,setsearchHistory,setwatchHistory,setchannelData,setvideoDetails,setvideoComments,setvideoCommentsToken,setMore,setvideoRecomend,setvideoRecomendToken,setdataToken ,setDataMore} = userSlice.actions;
+export const {setisUser,changeSearchTerm,setData,changeSelectedItem,setsearchHistory,setwatchHistory,setchannelData,setvideoDetails,setvideoComments,setvideoCommentsToken,setMore,setvideoRecomend,setvideoRecomendToken,setdataToken ,setDataMore ,setuserInfo} = userSlice.actions;

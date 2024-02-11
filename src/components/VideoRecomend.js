@@ -28,13 +28,13 @@ const VideoRecomend = (video_id) => {
     },[])
 
     const handleClick=async(item)=>{
-        console.log(item)
+        await new Promise(resolve => setTimeout(resolve, 2000));
         const resp = await axios.post(`${process.env.REACT_APP_PRODUCTION }/getVideoRecCont`,{
             video_id:item.video_id,
             token:videoRecomendToken
         })
-        console.log("resp broooooooooooo",resp.data.data.videos)
-        console.log("token",resp.data.data.continuation_token)
+        // console.log("resp broooooooooooo",resp.data.data.videos)
+        // console.log("token",resp.data.data.continuation_token)
         dispatch(setvideoRecomend(resp?.data?.data?.videos))
         dispatch(setvideoRecomendToken(resp?.data?.data?.continuation_token))
         dispatch(changeSelectedItem(item))
@@ -46,14 +46,17 @@ const VideoRecomend = (video_id) => {
                 const src=item.thumbnails["1"].url
                 return <div key={i} className='list'>
                 <img src={src} alt="" onClick={()=>handleClick(item)}/>
+                <p>{item.title}</p>
             </div>
             }
             else{
                 return ""
             }
     })
+
+
     return (
-    <div className='recomend'>{render}</div>
+    <div className='recomend'>{render || <p>Found none unfortunately</p>}</div>
     )
 }
 

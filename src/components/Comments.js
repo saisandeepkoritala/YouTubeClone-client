@@ -10,7 +10,7 @@ const Comments = ({video_id}) => {
 
   const dispatch = useDispatch();
   // console.log("comments are",videoComments)
-  // console.log("token ",videoCommentsToken)
+  // console.log("token ",videoCommentsToken) 
 
   const handleClick=()=>{
     axios.post(`${process.env.REACT_APP_PRODUCTION }/getCommentMore`,{
@@ -34,7 +34,7 @@ const Comments = ({video_id}) => {
 }
 
   const renderComments = videoComments?.map((item)=>{
-    const src=item?.thumbnails[0]?.url
+    const src=item?.thumbnails[0]?.url 
     return <div key={item.id} className='list'>
       <div>
           <img src={src} alt="" />
@@ -42,7 +42,7 @@ const Comments = ({video_id}) => {
       <div>
         <div className='user'>
           <p>{item.author_name}</p>
-          <p>{item.published_time}</p>
+          <p>Posted - {item.published_time}</p>
         </div>
           <p>{item.text}</p>
       </div>

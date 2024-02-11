@@ -13,7 +13,8 @@ const Home=()=> {
     useEffect(()=>{
         const getData=async()=>{
             const resp = await axios.get(`${process.env.REACT_APP_PRODUCTION }/getTrending`)
-            console.log(resp?.data?.data?.videos)
+            // need to change 
+            // console.log(resp?.data?.data?.videos)
             dispatch(setData(resp?.data?.data?.videos))
         }
         getData()
@@ -21,13 +22,19 @@ const Home=()=> {
     },[dispatch])
 
     const render=Info?.map((item,i)=>{
-            return <img src={item.thumbnails[1]?.url} alt="" key={i} 
-        onClick={()=>{
-            dispatch(changeSelectedItem(item))
-            dispatch(setwatchHistory(item.video_id))
-            navigate(`/detail/${item.video_id}`)
-        }} />
-    }
+            return (
+                <div>
+                <img src={item.thumbnails[1]?.url} alt="" key={item.title} 
+                    onClick={()=>{
+                        dispatch(changeSelectedItem(item))
+                        dispatch(setwatchHistory(item.video_id))
+                        navigate(`/detail/${item.video_id}`)
+                }} 
+                />
+                <p>{item.title}</p>
+                </div>
+            
+    )}
     )
     return <div className="home">{render}</div>
 }

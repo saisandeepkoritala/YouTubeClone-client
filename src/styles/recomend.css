@@ -1,4 +1,13 @@
 
+.recomend .list p{
+    width:200px;
+}
+
+.recomend .list img{
+    object-fit: contain;
+    border:1px solid white;
+}
+
 @media only screen and (max-width: 700px) {
     .recomend{
         width:100%;
@@ -9,8 +18,11 @@
     }
 
     .recomend .list img{
-        width:100%;
         object-fit: contain;
-        box-shadow: 5px 5px 2px white, -5px -5px 2px white;
+        border:1px solid white;
+    }
+
+    .recomend .list p{
+        width:300px;
     }
 }

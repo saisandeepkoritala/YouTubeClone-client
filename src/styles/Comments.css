@@ -13,11 +13,13 @@
     align-items: flex-start;
     justify-content: flex-start;
     margin-bottom: 5px;
+    gap:1rem;
     width:100%;
 }
 
-.comments div img{
+.comments .list img{
     border-radius: 50%;
+    border:2px solid white;
 }
 
 .comments .list .user p{

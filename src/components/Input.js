@@ -27,7 +27,7 @@ const Input = () => {
                 const {detail} = resp.data.data
                 if(detail){
                     notify()
-                    console.log("sorry bro")
+                    // console.log("sorry bro")
                 }
                 else{
                     const token = resp?.data?.data?.continuation_token
@@ -44,13 +44,13 @@ const Input = () => {
             // console.log(resp?.data?.data?.videos)
         }
         else{
-            console.log("outer")
+            // console.log("outer")
             // let user know no input
             notify1()
         }
     }
     const notify=()=>{
-        console.log("running")
+        // console.log("running")
         toast.info("Sorry no results !!", {
             progressStyle: { background: "red" },
             theme: 'colored',

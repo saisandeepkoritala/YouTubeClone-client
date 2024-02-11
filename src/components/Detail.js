@@ -39,7 +39,7 @@ const Detail = () => {
           channel_id: channel_id,
         });
         dispatch(setchannelData(respChannel?.data?.data));
-        console.log(respChannel.data)
+        // console.log(respChannel.data)
     
         // Introduce a delay of 1000 milliseconds (1 second)
         await new Promise(resolve => setTimeout(resolve, 2000));
@@ -52,7 +52,7 @@ const Detail = () => {
 
 
       } catch (error) {
-        console.error("Error fetching data:");
+          console.error("Error fetching data:");
         notify()
       }
     };
@@ -149,8 +149,8 @@ const Detail = () => {
       {renderDetails}
       <Comments video_id={item.id} />
     </div>
-    <div>
-      <div className='name'><h1>Videos you May also like</h1></div>
+    <div className='videorec'>
+      <div className='name'><h2>Videos you May also like</h2></div>
       <VideoRecomend video_id={item.id} />
       </div>
     </>

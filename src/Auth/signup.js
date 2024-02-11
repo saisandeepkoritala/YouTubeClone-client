@@ -57,7 +57,7 @@ function Signup() {
 
     const handleSubmit = async(e) => {
         e.preventDefault();
-        console.log(formData)
+        // console.log(formData)
         const response = await axios.post(`${process.env.REACT_APP_PRODUCTION}/signup`,formData)
 
         if(!response.data.error){
@@ -73,48 +73,54 @@ function Signup() {
     const handleSubmitCode=async(e)=>{
         e.preventDefault();
         if(formData.name && formData.email){
-            const resp= await axios.post(`${process.env.REACT_APP_PRODUCTION}/sendCode`,{
-                name:formData.name,
-                email:formData.email
-            })
-
-            console.log(resp)
-            if(resp.status===200){
-                SetshowVerify(true)
-                notify1("Please Check Your email !!");
+            try{
+                const resp= await axios.post(`${process.env.REACT_APP_PRODUCTION}/sendCode`,{
+                    name:formData.name,
+                    email:formData.email
+                })
+    
+                console.log("broooooooooo",resp)
+                if(resp.status===200){
+                    SetshowVerify(true)
+                    notify1("Please Check Your email !!");
+                }
+                else{
+                    console.log("Error")
+                    notify("Error,try again !!")
+                }
             }
-            else{
-                console.log("Error")
-                notify("Error,try again !!")
+            catch(e){
+                notify("Email already exists !!")
             }
         }
         else{
-            console.log("Fill out required details")
-            notify("Fill Details !!")
+            notify('Fill Details !!')
         }
     }
 
     const handleCheckValid=async(e)=>{
         e.preventDefault();
         if(formData.email){
-            const resp = await axios.post(`${process.env.REACT_APP_PRODUCTION}/verifyCode`,{
-                email:formData.email,
-                code:code
-            })
-
-            if(resp.status===200){
-                Setvanish(false)
-                SetshowVerify(false)
-                notify1("Verified !!")
+            try{
+                const resp = await axios.post(`${process.env.REACT_APP_PRODUCTION}/verifyCode`,{
+                    email:formData.email,
+                    code:code
+                })
+    
+                if(resp.status===200){
+                    Setvanish(false)
+                    SetshowVerify(false)
+                    notify1("Verified !!")
+                }
             }
-            else{
-                console.log("error")
-                notify("Invalid Code !!")
+            catch(e){
+                    console.log("error")
+                    notify("Invalid Code !!")
+                }
             }
-        }
         else{
-            console.log("how bro ????")
-            notify("Email Misiing !!")
+                // console.log("how bro ????")
+                notify("Email Misiing !!")
         }
     }
 

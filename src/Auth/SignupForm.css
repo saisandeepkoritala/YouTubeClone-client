@@ -8,7 +8,8 @@
     align-items:center;
     justify-content: space-evenly;
     flex-direction: column;
-    min-height: 70vh;
+    height: 75vh;
+    margin-top: 10vh;
     }
 
     .signup-form-container form {
@@ -43,17 +44,26 @@
     }
     
     .signup-form-container input {
-        padding: 15px 5px;
-        font-size: 16px;
-        border: 1px solid #ccc;
-        border-radius: 15px;
-        width: 300px;
+    display: block;
+    width:300px;
+    padding: 15px 5px;
+    color:white;
+    font-size: 1rem;
+    outline:2px solid white;
+    border:2px solid white;
+    border-radius: 20px;
     }
     
     .signup-form-container .error {
-        color: red;
-        font-size: 14px;
-        margin-bottom: 10px;
+    border:2px solid white;
+    color:white;
+    width:90%;
+    border-radius: 15px;
+    background-color: rgb(16, 16, 201);
+    padding: 10px 5px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    transition: all 0.25s ease-in-out; 
     }
     
     .signup-form-container button {
@@ -78,28 +88,39 @@
     .signup-form-container .fields .vanish{
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        justify-content: space-evenly;
+        width:100%;
     }
 
     .signup-form-container .fields .vanish input{
         display: block;
+        color:white;
         margin: 0;
         padding: 10px;
         width:50%;
     }
 
     .signup-form-container .fields button{
-        padding: 5px 15px;
         border:1px solid white;
+    }
+    .signup-form-container form div input{
+        width:75%;
     }
     .signup-form-container .fields .vanish button{
         display: block;
         background-color: red;
-        margin: 0;
-        padding: 5px;
-        border: 1px solid white;
+        outline: 2px solid white;
+        border:2px solid white;
+        color:white;
+        width:80%;
+        border-radius: 25px;
+        padding: 10px;
+        margin-bottom: 5px;
+        cursor: pointer;
+        transition: all 0.25s ease-in-out; 
     }
     .signup-form-container .fields .vanishButton{
+        outline: 2px solid white;
         border:1px solid white;
         background-color: #007BFF;
         color:white;
@@ -107,7 +128,24 @@
         align-items: center;
         justify-content: center;
         padding: 10px;
-        border-radius: 20px;
+        border-radius: 25px;
         font-size: 20px;
         cursor: pointer;
+    }
+
+    button[type="submit"]{
+        outline:2px solid white;
+        border:2px solid white;
+        color:white;
+        width:90%;
+        border-radius: 25px;
+        background-color: rgb(16, 16, 201);
+        padding: 10px 5px;
+        margin-bottom: 5px;
+        cursor: pointer;
+        transition: all 0.25s ease-in-out;
+    }
+    
+    button[type="submit"]:hover{
+        transform: scale(0.98);
     }

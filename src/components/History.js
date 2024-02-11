@@ -11,7 +11,7 @@ const History = () => {
   })
 
   const render2= newwatchHistory.map((item)=>{
-    console.log(item)
+    // console.log(item)
     return <YouTubeVideo videoId={item} width={300} height={300}/>
   })
 
