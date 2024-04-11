@@ -10,22 +10,31 @@ const VideoRecomend = (video_id) => {
     const navigate = useNavigate();
     const {videoRecomend,videoRecomendToken} = useSelector((store)=>store.user)
     const dispatch = useDispatch();
+    const Info = useSelector((store)=>store.user.data);
+    console.log("infoooo",Info)
     // console.log(videoRecomend)
 
-    useEffect(()=>{
-
-        const getData=async()=>{
+    useEffect(() => {
+        const getData = async () => {
             await new Promise(resolve => setTimeout(resolve, 2000));
-            const resp = await axios.post(`${process.env.REACT_APP_PRODUCTION }/getVideoRecomend`,{
-                video_id:video_id
-            })
-            //need to set continution token also 
-            dispatch(setvideoRecomend(resp?.data?.data?.videos))
-            dispatch(setvideoRecomendToken(resp?.data?.data?.continuation_token
-                ))
-        }
+            const resp = await axios.post(`${process.env.REACT_APP_PRODUCTION}/getVideoRecomend`, {
+                video_id: video_id
+            });
+            // Need to set continuation token also 
+            if (resp?.data?.data?.videos?.length) {
+                const firstFourVideos = resp?.data?.data?.videos?.slice(0, 4); 
+                console.log("videooo", firstFourVideos);
+                dispatch(setvideoRecomend(firstFourVideos));
+                dispatch(setvideoRecomendToken(resp?.data?.data?.continuation_token));
+            } else {
+                // Set only the first four videos from Info
+                const firstFourVideos = Info.slice(0, 4);
+                dispatch(setvideoRecomend(firstFourVideos));
+            }
+        };
         getData();
-    },[])
+    }, []);
+    
 
     const handleClick=async(item)=>{
         await new Promise(resolve => setTimeout(resolve, 2000));
@@ -33,7 +42,7 @@ const VideoRecomend = (video_id) => {
             video_id:item.video_id,
             token:videoRecomendToken
         })
-        // console.log("resp broooooooooooo",resp.data.data.videos)
+        console.log("resp broooooooooooo",resp.data.data.videos)
         // console.log("token",resp.data.data.continuation_token)
         dispatch(setvideoRecomend(resp?.data?.data?.videos))
         dispatch(setvideoRecomendToken(resp?.data?.data?.continuation_token))

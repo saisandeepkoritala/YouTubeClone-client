@@ -147,10 +147,10 @@ const Detail = () => {
       {renderInfo}
       {renderFooter}
       {renderDetails}
-      <Comments video_id={item.id} />
+      {/* <Comments video_id={item.id} /> */}
     </div>
     <div className='videorec'>
-      <div className='name'><h2>Videos you May also like</h2></div>
+      <div className='name'></div>
       <VideoRecomend video_id={item.id} />
       </div>
     </>

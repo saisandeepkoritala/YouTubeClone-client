@@ -17,7 +17,7 @@ const Comments = ({video_id}) => {
       token:videoCommentsToken,video_id
     }).then((resp)=>{
       //need to update continuation token to new.
-    // console.log("bro",resp.data.data.comments)
+    console.log("bro",resp.data.data.comments)
     dispatch(setMore(resp?.data?.data?.comments))
     dispatch(setvideoCommentsToken(resp?.data?.data?.continuation_token));
     })
